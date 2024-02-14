@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@500;700;800&display=swap');
+
+    /* font-family: 'Noto Naskh Arabic', serif; */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --midnight-express: #252836;
+    --jaguar: #1F1D2B;
+    --geraldine: #ec7a6f;
+    --geraldine-transparent: #ec7a6fbb;
+    --black-rock: #2D303E;
+    --white-color: #f7f9fa;
+    background-image: url("https://cutewallpaper.org/21/dark-background-wallpaper-1920x1080/Best-43-Background-Black-HD-on-HipWallpaper-HD-Wallpapers-.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    direction: rtl;
+    background-color: var(--midnight-express);
+    color: var(--white-color);
+    font-family: 'Mulish', sans-serif;
+    overflow: hidden;
+}
+
+li {
+    list-style: none;
+    overflow: hidden;
+}
+
+input, button {
+    font-family: "Rubick", sans-serif;
+}
+
+.container {
+    height: 100%;
+    overflow: auto;
+}
+    
+.app-nav {
+    background-color: #11111133;
+    box-shadow: -2px 0px 1px -2px var(--black-rock);
+}
+
+.app-nav ul, .nav-link a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-link {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav-link:hover, .selected {
+    background-color: var(--geraldine);
+}
+
+
+.nav-link a {
+    color: var(--white-color);
+    padding: 0.5em;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-icons {
+    display: flex;
+}
+
+main {
+    height: 100%;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: var(--color5);
+    text-align: center;
+    padding: 1em;
+    border-top: 2px solid var(--black-rock);
+    border-bottom: 2px solid var(--black-rock);
+    font-weight: 500;
+}
+
+@media(min-width: 1000px) {
+    .container {
+        display: flex;
+    }
+
+    .app-nav ul {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .nav-link a {
+        border-top: var(--white-color);
+        border-bottom: var(--white-color);
+    }
+
+    .nav-link a {
+        padding: 0.5em 0.8em;
+    }
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,31 @@
+.logout {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 1em;
+    background-color: var(--geraldine);
+    color: black;
+    border: 0;
+    font-size: 1.1rem;
+    font-family: "Rubick", sans-serif;
+    padding: 0.5em;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.logout:hover, .logout:focus {
+    background-color: transparent;
+    color: var(--geraldine);
+    box-shadow: 0px 0px 1px 2px var(--geraldine);
+}
+
+.logout:active {
+    transform: scale(0.98);
+    box-shadow: 0px 0px 1px 2px var(--black-rock);
+}
+
+@media(min-width: 1000px) {
+    main {
+        padding: 2em;
+    }
+}

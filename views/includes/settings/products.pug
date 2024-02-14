@@ -1,0 +1,33 @@
+div(class=`products-management ${categories.length ? "show-slide" : "hide-slide"}`)  
+    h2 إدارة المواد
+    nav.products-nav
+        ul.products-categories
+            each category in categories
+                li(class=`products-category ${category.name == categoryName ? "selected-category": null}`)
+                    a(href=`/settings/products-management/?category=${category.name}`) #{category.name}
+
+    .category-products
+        .add-product
+            include ../icons/add.svg
+        if items
+            each product in items
+                .category-product(id=product._id)
+                    p.category-product-name #{product.name}
+                    p.category-product-price #{product.price}
+                        span JD
+                    i.edit-icon
+                        include ../icons/edit.svg
+
+div(class=`categories-management ${categories.length ? "hide-slide" : "show-slide"}`)
+    h2 إدارة الفئات
+    if !categories.length
+        p.initial-message لا توجد مواد متاحة حاليا
+    .categories
+        div(class=`add-category`)
+            include ../icons/add.svg
+        each category in categories
+            .category(id=category._id)
+                p(class="category-name" id=category.name) #{category.name}
+                i.edit-icon
+                    include ../icons/edit.svg
+

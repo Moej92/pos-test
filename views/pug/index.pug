@@ -1,0 +1,48 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href=`/css/${page == "/" ? "home" : page}.css`)
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+        title #{page == "/" ? "P.O.S" : page.slice(1)}
+        //- script(src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer")
+    body
+        -var isAdmin = true
+        .container
+            nav.app-nav
+                ul
+                    li.nav-link
+                        a(href="/profile" class=`${page === "/profile" ? "selected" : null}`)
+                            include ../includes/icons/profile.svg
+                    li.nav-link
+                        a(href="/" class=`${page === "/" ? "selected" : null}`)
+                            include ../includes/icons/home.svg
+                    li.nav-link
+                        a(href="appointments" class=`${page === "/appointments" ? "selected" : null}`)
+                            include ../includes/icons/appointments.svg
+                    li.nav-link
+                        a(href="/staff" class=`${page === "/staff" ? "selected" : null}`)
+                            include ../includes/icons/staff.svg
+                    li.nav-link
+                        a(href="/settings/products-management" class=`${page === "/settings" ? "selected" : null}`)
+                            include ../includes/icons/settings.svg
+                    li.nav-link
+                        a(href="notification" class=`${page === "/notification" ? "selected" : null}`)
+                            include ../includes/icons/notification.svg
+
+            if page == "/"
+                include ../includes/home.pug
+            else if page == "/profile"
+                include  ../includes/profile.pug
+            else if page == "/appointments"
+                include ../includes/appointments.pug
+            else if page == "/staff"
+                include ../includes/staff.pug
+            else if page == "/settings"
+                include ../includes/settings.pug
+            else if page == "/notifications"
+                include ../includes/notifications.pug
+        

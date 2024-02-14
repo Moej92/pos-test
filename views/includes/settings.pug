@@ -1,0 +1,70 @@
+main.settings
+    h1.title الأعدادات
+    nav
+        ul.settings-items
+            li(class=`${section === "products_management" && "selected-settings-menu"}`)
+                a(href="/settings/products-management")
+                    include ../includes/icons/products.svg
+                    | إدارة المواد
+                    p إدارة المنتجات الخاصة بك، والتسعير
+
+            li(class=`${section === "invoice" && "selected-settings-menu"}`)
+                a(href="/settings/invoice")
+                    include ../includes/icons/products.svg
+                    | الفواتير
+                    p سجل الفواتير، طباعة التقارير
+
+    .settings-screen
+        if section === "products_management"
+            div(class=`toggler`) 
+                include ./icons/slider.svg
+                p.next-slide #{categories.length ? "إدارة الفئات" : "إدارة المواد" }
+            include ./settings/products.pug
+        else if section === "invoice"
+            include ./settings/invoice.pug
+            script(src="/scripts/settings/invoice.js")
+
+
+    .edit-screen
+        i.exit-edit
+                include ./icons/x.svg
+        .form-container#add-category-form
+            form(action="/settings/products-management/add-category" class="edit-form" method="POST")
+                h3.form-title اضافة فئة جديدة
+                input(type="text" class="edit-form-input" name="category_name" placeholder="أدخل اسم الفئة" required)
+                button.submit حفظ
+
+        .form-container#edit-category-form
+            form(action="/settings/products-management/edit-category" class="edit-form" method="POST")
+                h3.form-title تعديل الفئة    
+                p.form-description في حال تغيير اسم الفئة سيتم تعديل جميع المواد الملحقة
+                input(type="text" class="edit-form-input current-category" name="category_name" readonly)
+                input(type="text" class="edit-form-input" name="new_category_name" placeholder="أدخل اسم الفئة الجديد" required)
+                button.submit حفظ   
+            form(action="/settings/products-management/delete-category" class="edit-form" method="POST")
+                h3.form-title حذف الفئة 
+                p.form-description في حال حذف الفئة سيتم حذف جميع المواد الملحقة
+                input(type="hidden" class="category_id" name="category_id")
+                button.submit.delete-btn حذف 
+
+        .form-container#add-product-form 
+            form(action="/settings/products-management/add-product" class="edit-form" method="POST")
+                h3.form-title اضافة مادة جديدة
+                input(type="hidden" name="category_name" value=categoryName)
+                input(type="text" class="edit-form-input" name="product_name" placeholder="أدخل اسم المادة" required)
+                input(type="number" class="edit-form-input" name="product_price" min="1" placeholder="أدخل سعر المادة" required)
+                button.submit حفظ
+        
+        .form-container#edit-product-form 
+            form(action="/settings/products-management/edit-product" class="edit-form" method="POST")
+                h3.form-title تعديل المادة
+                input(type="hidden" name="product_id" id="edit-product")
+                input(type="text" class="edit-form-input edit-product-name" name="new_product_name" placeholder="أدخل اسم المادة الجديد")
+                input(type="number" class="edit-form-input edit-product-price" name="new_product_price" placeholder="أدخل سعر المادة الجديد")
+                button.submit حفظ
+            form(action="/settings/products-management/delete-product" class="edit-form" method="POST")
+                h3.form-title حذف المادة
+                input(type="hidden" name="product_id" id="delete-product")
+                button.submit.delete-btn حذف
+        script(src="/scripts/settings/products_management.js")
+    

@@ -1,0 +1,48 @@
+h2 الفواتير
+
+i.filter-toggle 
+    include ../icons/filter.svg
+
+form(class="filter-form open-form" action="/settings/invoice/")
+    .form-row
+        label(for="from-date") من تاريخ
+        input(type="date" id="from-date" name="from" class="from-date" required)
+    .form-row
+        label(for="to-date") الى تاريخ
+        input(type="date" id="to-date" name="to" class="to-date")
+    button
+        include ../icons/invoice_search.svg
+    
+h3.filtered-date #{fromDate.toDateString()}
+.filtered-invoices 
+    if(invoices.length)
+        each invoice in invoices 
+            .invoice(tabindex="0") 
+                h4.invoice-num ##{invoice.invoiceNumber}
+                .invoice-row
+                    p.invoice-time=invoice.date.getHours() + ":" + invoice.date.getMinutes()
+                    p.invoice-user #{invoice.user}
+                .invoice-items
+                    each item in invoice.items
+                        .invoice-item
+                            p.item-description #{item.name}
+                            p.item-qty #{item.qty}
+                            p.item-price #{item.price}
+                
+                p.invoice-subtotal Subtotal 
+                    span.subtotal #{invoice.subtotal}
+                p.invoice-discount Discount 
+                    span.discount #{invoice.discount}
+                p.invoice-payment-method #{invoice.paymentMethod}
+                p.invoice-cash-amount Amount 
+                    span.amount #{invoice.amount}
+                p.invoice-cash-change Change
+                    span.change #{invoice.change}
+                .invoice-row
+                    i.print-invoice
+                        include ../icons/print.svg
+                    p.invoice-total Total: 
+                        span.total #{invoice.total}
+    
+    
+    

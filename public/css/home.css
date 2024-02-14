@@ -1,0 +1,584 @@
+.col-1 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: auto;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: var(--color5);
+    text-align: center;
+    padding: 1em;
+    background-color: #11111133;
+    border-top: 2px solid var(--black-rock);
+    border-bottom: 2px solid var(--black-rock);
+    font-weight: 500;
+}
+
+.date, .user {
+    display: flex;
+    justify-content: space-between;
+    background-color: #11111133;
+    padding: 0.5em 1em;
+}
+
+.user {
+    margin-top: 0.5em;
+    justify-content: space-around;
+    align-items: flex-end;
+    border-bottom: 2px solid var(--black-rock);
+}
+
+.user * {
+    border-bottom: 2px solid var(--black-rock);
+}
+
+.time {
+    text-align: left;
+    font-weight: 600;
+}
+
+.search {
+    position: relative;
+    margin-right: auto;
+    padding: 0 1em;
+    width: 100%;
+}
+
+.search-bar {
+    background-color: #2D303E88;
+    color: var(--white-color);
+    margin-top: 1em;
+    padding: 0.5em;
+    padding-right: 2em;
+    font-size: 1rem;
+    width: 100%;
+    border: 0;
+}
+
+.search-bar:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 2px var(--geraldine);
+}
+
+.search-icon {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+}
+
+.categories {
+    margin-top: 1em;
+    padding: 1em;
+    background-color: #11111166;
+    overflow: hidden;
+    display: flex;
+    gap: 1em;
+    overflow-x: auto;
+    min-height: 80px;
+    border-bottom: 2px solid var(--black-rock);
+}
+
+.category {
+    display: inline-block;
+    min-width: 100px;
+    text-align: center;
+    width: max-content;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-weight: 400;
+    background-color: #2D303E88;
+    border-radius: 20px;
+    transition: 0.3s ease;
+    box-shadow: inset 0px 0px 1px 1px var(--white-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-category, .category:hover {
+    color: var(--geraldine);
+    box-shadow: inset 0px 0px 1px 2px var(--geraldine)
+}
+
+.category, .list {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+} 
+
+.lists {
+    background-color: #11111166;
+    padding: 1em;
+    border-bottom: 2px solid var(--black-rock);
+    overflow-y: auto;
+    height: 65%;
+}
+
+.list {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1em;
+    animation-name: fade-in;
+    animation-duration: 0.3s;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.selected-list {
+    display: grid;
+}
+
+.item {
+    background-color: #f7f9fa99;
+    color: black;
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    padding: 1.5em 0;
+}
+
+.item:hover {
+    background-color: var(--white-color);
+}
+
+.item:focus {
+    outline: 0;
+    background-color: var(--geraldine);
+}
+
+.item:active {
+    transform: scale(0.98);
+    box-shadow: inset 0px 0px 1px 1px var(--white-color);
+}
+
+.item img {
+    width: 40px;
+}
+
+.item-price {
+    display: none;
+}
+
+
+/*
+*********************
+    Invoice Style
+*********************
+*/
+
+.col-2 {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s ease;
+    direction: ltr;
+}
+
+.invoice {
+    background-color: #11111166;
+    box-shadow: 3px 0px 1px -2px var(--black-rock);
+    padding: 1em;
+    position: relative;
+    font-size: 1.1rem;
+    overflow: hidden;
+    height: 100%;
+}
+
+.invoice-items {
+    height: 60%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+@media(min-width: 850px) {
+    .invoice-items {
+        height: 80%;
+    }
+}
+
+.row {
+    display: flex;
+    background-color: var(--black-rock);
+    margin: 1em 0;
+    padding: 0.5em;
+    padding-right: 0.6em;
+    position: relative;
+    left: 0;
+    transition: 0.3s ease;
+    border-radius: 20px;
+}
+
+.row:focus {
+    left: 50px;
+}
+
+.row:nth-child(1) {
+    background-color: unset;
+    position: static;
+    border-bottom: 2px solid var(--black-rock);
+    border-radius: 0;
+    padding: 0.5em 0;
+}
+
+.row p:nth-child(1) {
+    width: 60%;
+}
+
+.row p:nth-child(2) {
+    width: 10%;
+    text-align: center;
+}
+
+.row p:nth-child(3) {
+    width: 30%;
+    text-align: right;
+}
+
+.row i {
+    position: absolute;
+    top: 0;
+    left: -50px;
+    cursor: pointer;
+    background-color: var(--black-rock);
+    padding: 0.27em;
+    border-radius: 50%;
+}
+
+.row i:hover {
+    color: var(--geraldine);
+}
+
+.row:focus i {
+    left: -42px;
+    z-index: 1;
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    border-top: 2px solid var(--black-rock);
+    padding: 1em;
+}
+
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4em;
+}
+
+.payment {
+    display: block;
+    background-color: var(--geraldine);
+    padding: 0.3em 0.6em;
+    width: 100%;
+    border: 0;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.payment:hover {
+    background-color: transparent;
+    color: var(--geraldine);
+    box-shadow: 0px 0px 1px 2px var(--geraldine);
+}
+
+
+@media(min-width: 1000px) {
+
+    main {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .invoice-icon, .close-icon {
+        display: none;
+    }
+
+    .col-1 {
+        width: 100%;
+        padding: 2em;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .date, .user {
+        padding: 0.5em 1.5em;
+        font-size: 1.1rem;
+    }
+
+    .date {
+        border-bottom: 2px solid var(--black-rock);
+    }
+
+    .search {
+        width: 400px;
+        padding: 0;
+    }
+
+    .search-icon {
+        right: 5px;
+    }
+    
+    .categories {
+        flex-wrap: wrap;
+        gap: 1em;
+        overflow-y: auto;
+    }
+
+    .category {
+        padding: 0.5em 1em;
+        font-size: 1.1rem;
+    }
+
+    .list {
+        padding: 0;
+    }
+
+    .col-2 {
+        width: 500px;
+        position: static;
+    }
+
+}
+
+.payment-screen {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #2D303E88;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    display: none;
+}
+
+.payment-menu {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--white-color);
+    padding: 1em 2em;
+    color: var(--black-rock);
+    direction: ltr;
+    position: relative;
+    overflow: auto;
+}
+
+.close-payment {
+    position: absolute;
+    top: 2em;
+    background-color: var(--black-rock);
+    color: var(--white-color);
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 0.2em;
+    transition: 0.3s ease;
+    box-shadow: 0px 0px 1px 2px var(--black-rock)
+}
+
+.close-payment:hover {
+    background-color: var(--white-color);
+    color: var(--black-rock);
+}
+
+h2 {
+    font-size: 1.7rem;
+    border-bottom: 2px solid #2D303E88;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.payment-menu .subtotal, .discount {
+    font-size: 1.1rem;
+    padding: 0.5em;
+    display: flex;
+}
+
+.payment-menu .subtotal span, .discount span {
+    font-size: 1.3rem;
+    margin-left: auto;
+}
+
+.discount {
+    border-bottom: 2px solid #2D303E88;
+}
+
+.discount select {
+    margin-left: 1em;
+    padding: 0.3em 0.5em;
+    font-size: 1rem;
+    position: relative;
+    top: -7px;
+    border: 0;
+    background-color: var(--black-rock);
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.discount select:focus {
+    outline: 0;
+    box-shadow: 0px 0px 1px 1px var(--geraldine) 
+} 
+
+.payment-method {
+    display: flex;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+.method {
+    padding: 0.3em 0.6em;
+    border: 2px solid #2D303E88;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.selected-method, .method:hover {
+    border: 2px solid var(--geraldine);
+    color: var(--geraldine);
+}
+
+.current-method {
+    text-align: center;
+    margin: 0.5em;
+    font-size: 1.8rem;
+}
+
+.menu-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-calculator {
+    pointer-events: none;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.calculator-screen {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.amount {
+    position: relative;
+    width: 50%;
+}
+
+.amount-input {
+    border: 0;
+    font-size: 1.3rem;
+    padding: 0.3em;
+    border-bottom: 2px solid var(--black-rock);
+    width: 100%;
+}
+
+.amount-input:focus {
+    outline: 0;
+    border-bottom: 2px solid var(--geraldine);
+}
+
+.ac {
+    background-color: white;
+    position: absolute;
+    right: 0;
+    padding: 0.3em;
+    height: 90%;
+    color: var(--geraldine);
+    cursor: pointer;
+}
+
+.ac:hover svg {
+    box-shadow: 0px 0px 1px 2px var(--geraldine);
+    border-radius: 50%;
+}
+
+.change {
+    width: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.calculator-btns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3em;
+}
+
+.calculator-btns * {
+    text-align: center;
+}
+
+.num, .dot, .equal {
+    font-size: 1.3rem;
+    box-shadow: inset 0px 0px 1px 2px #2D303E88;
+    padding: 1em 0.2em;
+}
+
+.confirm {
+    width: 100%;
+}
+
+.total {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 1em 0 0.5em;
+    text-align: right;
+}
+
+
+.confirm-payment {
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 0.5em;
+    border: 0;
+    background-color: var(--geraldine);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.confirm-payment:hover {
+    color: var(--white-color);
+}
+
+
